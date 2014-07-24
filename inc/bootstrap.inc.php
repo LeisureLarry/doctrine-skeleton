@@ -11,4 +11,5 @@ $config = Setup::createAnnotationMetadataConfiguration(
     array($applicationOptions['entity_dir']),
     $applicationOptions['debug_mode']
 );
+
 $em = EntityManager::create($connectionOptions, $config);

@@ -3,7 +3,7 @@
     "description": "A sample application skeleton using Doctrine 2",
     "license": "MIT",
     "type": "project",
-    
+
     "autoload": {
         "psr-0": {
             "Models": "./src/",
