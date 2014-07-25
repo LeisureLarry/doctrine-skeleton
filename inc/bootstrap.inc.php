@@ -1,12 +1,12 @@
 <?php
 
 // Use Composer autoloading
-$loader = require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
+// Get Doctrine entity manager
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
-// Use Doctrine entity manager
 $config = Setup::createAnnotationMetadataConfiguration(
     array($applicationOptions['entity_dir']),
     $applicationOptions['debug_mode']
