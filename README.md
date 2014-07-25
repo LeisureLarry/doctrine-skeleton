@@ -4,7 +4,7 @@
 
 A sample application skeleton using Doctrine 2
 
-### default-config.php
+### config/default-config.php
 
 ```php
 <?php
@@ -26,7 +26,7 @@ $applicationOptions = array(
 
 ```
 
-Change user, password andd dbname to your needs.
+Change user, password and dbname to your needs.
 
 ### Idea
 [Jan Teriete](https://plus.google.com/106660436858103395374?rel=author)
