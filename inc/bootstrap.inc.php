@@ -1,5 +1,8 @@
 <?php
 
+// Load config file
+require_once __DIR__ . '/../config/default-config.php';
+
 // Use Composer autoloading
 require_once __DIR__ . '/../vendor/autoload.php';
 
