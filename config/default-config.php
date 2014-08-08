@@ -12,5 +12,5 @@ $connectionOptions = array(
 // Application/Doctrine configuration
 $applicationOptions = array(
     'debug_mode' => true, // in production environment false
-    'entity_dir' => dirname(__DIR__) . '/src/Models',
+    'entity_dir' => dirname(__DIR__) . '/src/Entities',
 );
