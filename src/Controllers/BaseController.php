@@ -75,9 +75,9 @@ abstract class BaseController
         $this->addContext('action', $action);
 
         $shortName = $this->getControllerShortName();
-        $this->setTemplate($shortName . '/' . $action);
-
         $methodName = $action . 'Action';
+        $this->setTemplate($shortName . '/' . $methodName);
+
         if (method_exists($this, $methodName)) {
             $this->$methodName();
         } else {
