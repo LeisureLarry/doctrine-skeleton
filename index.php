@@ -20,4 +20,4 @@ switch ($action) {
 // Get flash message
 $message = get_message();
 
-require_once 'views/layout.tpl.php';
+require_once 'templates/layout.tpl.php';

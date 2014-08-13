@@ -2,9 +2,9 @@
 <html>
 
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>Doctrine-Skeleton</title>
-    <link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+    <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
 </head>
 
 <body>
