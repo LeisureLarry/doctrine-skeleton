@@ -20,8 +20,7 @@ abstract class BaseController
     protected function getControllerShortName()
     {
         $className = get_class($this); // i.e. Controllers\IndexController
-        $controllerName = preg_replace('/^Controllers\\\/', '', $className);
-        return strtolower($controllerName); // i.e. IndexController
+        return preg_replace('/^Controllers\\\/', '', $className); // i.e. IndexController
     }
 
     protected function getEntityManager()

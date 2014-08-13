@@ -6,6 +6,6 @@ class IndexController extends BaseController
 {
     public function indexAction()
     {
-
+        // Fill me
     }
 }
