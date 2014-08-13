@@ -17,7 +17,7 @@
     <?php require_once '_errors.tpl.php'; ?>
 
     <section>
-        <?php require_once $view . '.tpl.php'; ?>
+        <?php require_once $template; ?>
     </section>
 </body>
 </html>

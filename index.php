@@ -8,16 +8,19 @@ require_once 'inc/bootstrap.inc.php';
 // Session needed for flash messages
 session_start();
 
-$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
-$view = $action;
+// Path to our index.php
+$basePath = dirname(__FILE__);
 
-switch ($action) {
-    default:
-        $view = 'index';
-        break;
+$controller = isset($_GET['controller']) ? $_GET['controller'] : 'index';
+$action = isset($_GET['action']) ? $_GET['action'] : 'index';
+
+$namespace = 'Controllers\\';
+$controllerName = $namespace . ucfirst($controller) . 'Controller';
+
+if (class_exists($controllerName)) {
+    $requestController = new $controllerName($basePath, $em);
+    $requestController->run($action);
+} else {
+    $requestController = new Controllers\IndexController($basePath, $em);
+    $requestController->error404();
 }
-
-// Get flash message
-$message = get_message();
-
-require_once 'templates/layout.tpl.php';
