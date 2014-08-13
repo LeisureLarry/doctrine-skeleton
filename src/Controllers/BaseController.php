@@ -24,6 +24,11 @@ abstract class BaseController
         return strtolower($controllerName); // i.e. IndexController
     }
 
+    protected function getEntityManager()
+    {
+        return $this->em;
+    }
+
     protected function setTemplate($template)
     {
         $this->template = $template;
@@ -32,33 +37,6 @@ abstract class BaseController
     protected function getTemplate()
     {
         return $this->template . '.tpl.php';
-    }
-
-    public function run($action)
-    {
-        $this->addContext('action', $action);
-
-        $shortName = $this->getControllerShortName();
-        $this->setTemplate($shortName . '/' . $action);
-
-        $methodName = $action . 'Action';
-        if (method_exists($this, $methodName)) {
-            $this->$methodName();
-        } else {
-            $this->error404();
-        }
-
-        extract($this->context); // Add array content as local variables
-
-        $message = get_message(); // Get flash message
-        $template = $this->getTemplate();
-
-        require_once $this->basePath . '/templates/layout.tpl.php';
-    }
-
-    protected function getEntityManager()
-    {
-        return $this->em;
     }
 
     protected function addContext($key, $value)
@@ -82,10 +60,36 @@ abstract class BaseController
         return $message;
     }
 
-    protected function redirect($to)
+    protected function redirect($to = null)
     {
-        header('Location:' . $to);
+        if (!empty($to)) {
+            $to = '?' . $to;
+        }
+
+        header('Location: index.php' . $to);
         exit;
+    }
+
+    public function run($action)
+    {
+        $this->addContext('action', $action);
+
+        $shortName = $this->getControllerShortName();
+        $this->setTemplate($shortName . '/' . $action);
+
+        $methodName = $action . 'Action';
+        if (method_exists($this, $methodName)) {
+            $this->$methodName();
+        } else {
+            $this->error404();
+        }
+
+        extract($this->context); // Add array content as local variables
+
+        $message = $this->getMessage(); // Get flash message
+        $template = $this->getTemplate();
+
+        require_once $this->basePath . '/templates/layout.tpl.php';
     }
 
     public function error404()
