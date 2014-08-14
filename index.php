@@ -14,8 +14,8 @@ $basePath = dirname(__FILE__);
 $controller = isset($_GET['controller']) ? $_GET['controller'] : 'index';
 $action = isset($_GET['action']) ? $_GET['action'] : 'index';
 
-$namespace = 'Controllers\\';
-$controllerName = $namespace . ucfirst($controller) . 'Controller';
+$controllerNamespace = 'Controllers\\';
+$controllerName = $controllerNamespace . ucfirst($controller) . 'Controller';
 
 if (class_exists($controllerName)) {
     $requestController = new $controllerName($basePath, $em);

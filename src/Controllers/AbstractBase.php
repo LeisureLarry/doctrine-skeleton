@@ -4,7 +4,7 @@ namespace Controllers;
 
 use Doctrine\ORM\EntityManager;
 
-abstract class BaseController
+abstract class AbstractBase
 {
     protected $basePath;
     protected $context = array();

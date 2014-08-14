@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-class IndexController extends BaseController
+class IndexController extends AbstractBase
 {
     public function indexAction()
     {
