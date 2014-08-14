@@ -28,14 +28,18 @@ abstract class AbstractBase
         return $this->em;
     }
 
-    protected function setTemplate($template)
+    protected function setTemplate($template, $controller = null)
     {
-        $this->template = $template;
+        if (empty($controller)) {
+            $controller = $this->getControllerShortName();
+        }
+
+        $this->template = $controller . '/' . $template . '.tpl.php';
     }
 
     protected function getTemplate()
     {
-        return $this->template . '.tpl.php';
+        return $this->template;
     }
 
     protected function addContext($key, $value)
@@ -71,11 +75,9 @@ abstract class AbstractBase
 
     public function run($action)
     {
-        $this->addContext('action', $action);
-
-        $shortName = $this->getControllerShortName();
         $methodName = $action . 'Action';
-        $this->setTemplate($shortName . '/' . $methodName);
+        $this->setTemplate($methodName);
+        $this->addContext('action', $action);
 
         if (method_exists($this, $methodName)) {
             $this->$methodName();
