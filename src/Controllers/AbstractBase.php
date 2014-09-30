@@ -11,7 +11,7 @@ abstract class AbstractBase
     protected $em;
     protected $template;
 
-    public function __construct($basePath, EntityManager $em)
+    public function __construct($basePath, EntityManager $em = null)
     {
         $this->basePath = $basePath;
         $this->em = $em;
@@ -19,25 +19,21 @@ abstract class AbstractBase
 
     public function run($action)
     {
+        $this->addContext('action', $action);
+
         $methodName = $action . 'Action';
         $this->setTemplate($methodName);
-        $this->addContext('action', $action);
 
         if (method_exists($this, $methodName)) {
             $this->$methodName();
         } else {
-            $this->error404();
+            $this->render404();
         }
 
-        extract($this->context); // Add array content as local variables
-
-        $message = $this->getMessage(); // Get flash message
-        $template = $this->getTemplate();
-
-        require_once $this->basePath . '/templates/layout.tpl.php';
+        $this->render();
     }
 
-    public function error404()
+    public function render404()
     {
         header('HTTP/1.0 404 Not Found');
         die('Error 404');
@@ -99,5 +95,15 @@ abstract class AbstractBase
 
         header('Location: index.php' . $to);
         exit;
+    }
+
+    protected function render()
+    {
+        extract($this->context);
+
+        $message = $this->getMessage(); // Get flash message
+        $template = $this->getTemplate();
+
+        require_once $this->basePath . '/templates/layout.tpl.php';
     }
 }

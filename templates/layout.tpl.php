@@ -12,12 +12,12 @@
         <h1>Doctrine-Skeleton</h1>
     </header>
 
-    <?php require_once 'navi.tpl.php'; ?>
-    <?php require_once 'flash_message.tpl.php'; ?>
-    <?php require_once 'errors.tpl.php'; ?>
+    <?php require 'navi.tpl.php'; ?>
+    <?php require 'flash_message.tpl.php'; ?>
+    <?php require 'errors.tpl.php'; ?>
 
     <section>
-        <?php require_once $template; ?>
+        <?php require $template; ?>
     </section>
 </body>
 </html>

@@ -22,5 +22,5 @@ if (class_exists($controllerName)) {
     $requestController->run($action);
 } else {
     $requestController = new Controllers\IndexController($basePath, $em);
-    $requestController->error404();
+    $requestController->render404();
 }
