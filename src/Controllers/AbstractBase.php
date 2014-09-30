@@ -11,7 +11,7 @@ abstract class AbstractBase
     protected $em;
     protected $template;
 
-    public function __construct($basePath, EntityManager $em = null)
+    public function __construct($basePath, EntityManager $em)
     {
         $this->basePath = $basePath;
         $this->em = $em;
