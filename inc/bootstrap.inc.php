@@ -10,9 +10,16 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
+$proxyDir = null;
+$cache = null;
+$isSimpleMode = false;
+
 $config = Setup::createAnnotationMetadataConfiguration(
     array($applicationOptions['entity_dir']),
-    $applicationOptions['debug_mode']
+    $applicationOptions['debug_mode'],
+    $proxyDir,
+    $cache,
+    $isSimpleMode
 );
 
 $em = EntityManager::create($connectionOptions, $config);
