@@ -86,11 +86,30 @@ abstract class AbstractBase
 
         return $message;
     }
-
-    protected function redirect($to = null)
+    
+    protected function recall($controller, $action)
     {
-        if (!empty($to)) {
-            $to = '?' . $to;
+        $controllerName = __NAMESPACE__ . '\\' . ucfirst($controller) . 'Controller';
+        $controller = new $controllerName($this->basePath, $this->em);
+        $controller->run($action);
+        exit;
+    }
+
+    protected function redirect($controller = null, $action = null)
+    {
+        $params = array();
+        
+        if (!empty($controller)) {
+            $params[] = 'controller=' . $controller;
+        }
+        
+        if (!empty($action)) {
+            $params[] = 'action=' . $action;
+        }
+        
+        $to = '';
+        if (!empty($params)) {
+            $to = '?' . implode('&', $params);
         }
 
         header('Location: index.php' . $to);
