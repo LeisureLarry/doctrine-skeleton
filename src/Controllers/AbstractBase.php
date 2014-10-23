@@ -87,7 +87,7 @@ abstract class AbstractBase
         return $message;
     }
     
-    protected function recall($controller, $action)
+    protected function recall($action, $controller)
     {
         $controllerName = __NAMESPACE__ . '\\' . ucfirst($controller) . 'Controller';
         $controller = new $controllerName($this->basePath, $this->em);
@@ -95,18 +95,22 @@ abstract class AbstractBase
         exit;
     }
 
-    protected function redirect($controller = null, $action = null)
+    protected function redirect($action = null, $controller = null)
     {
         $params = array();
-        
+
+        if (empty($controller) && !empty($action)) {
+            $controller = $this->getControllerShortName();
+        }
+
         if (!empty($controller)) {
             $params[] = 'controller=' . $controller;
         }
-        
+
         if (!empty($action)) {
             $params[] = 'action=' . $action;
         }
-        
+
         $to = '';
         if (!empty($params)) {
             $to = '?' . implode('&', $params);
