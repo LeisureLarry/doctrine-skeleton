@@ -99,10 +99,6 @@ abstract class AbstractBase
     {
         $params = array();
 
-        if (empty($controller) && !empty($action)) {
-            $controller = $this->getControllerShortName();
-        }
-
         if (!empty($controller)) {
             $params[] = 'controller=' . $controller;
         }
