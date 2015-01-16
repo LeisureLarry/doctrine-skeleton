@@ -41,9 +41,9 @@ abstract class AbstractBase
 
     protected function getControllerShortName()
     {
-        $className = get_class($this); // i.e. Controllers\IndexController
+        $className = get_class($this); // i.e. Controllers\IndexController or Controllers\Backend\IndexController
 
-        return preg_replace('/^Controllers\\\/', '', $className); // i.e. IndexController
+        return preg_replace('/^([A-Za-z]+\\\)+/', '', $className); // i.e. IndexController
     }
 
     protected function getEntityManager()
@@ -86,7 +86,7 @@ abstract class AbstractBase
 
         return $message;
     }
-    
+
     protected function recall($action, $controller)
     {
         $controllerName = __NAMESPACE__ . '\\' . ucfirst($controller) . 'Controller';
