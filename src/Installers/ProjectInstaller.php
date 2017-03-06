@@ -10,25 +10,25 @@ use Composer\Util;
 class ProjectInstaller
 {
 
-    protected static $jsonNodes = array(
+    protected static $jsonNodes = [
         'name',
         'description',
         'license',
         'type',
         'scripts',
-    );
+    ];
 
-    protected static $jsonContents = array(
+    protected static $jsonContents = [
         'autoload' => 'psr-4',
-    );
+    ];
 
-    protected static $deleteFiles = array(
+    protected static $deleteFiles = [
         '.gitignore',
         'LICENSE',
         'README.md',
         'src/Entities/.gitkeep',
         'src/Repositories/.gitkeep',
-    );
+    ];
 
     public static function postCreate(Event $event)
     {

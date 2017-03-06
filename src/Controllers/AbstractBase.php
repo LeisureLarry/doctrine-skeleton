@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityManager;
 abstract class AbstractBase
 {
     protected $basePath;
-    protected $context = array();
+    protected $context = [];
     protected $em;
     protected $template;
 
@@ -97,7 +97,7 @@ abstract class AbstractBase
 
     protected function redirect($action = null, $controller = null)
     {
-        $params = array();
+        $params = [];
 
         if (!empty($controller)) {
             $params[] = 'controller=' . $controller;

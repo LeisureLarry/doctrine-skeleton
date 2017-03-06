@@ -10,19 +10,19 @@ A sample application skeleton using Doctrine 2
 <?php
 
 // MySQL database configuration
-$connectionOptions = array(
+$connectionOptions = [
     'driver' => 'pdo_mysql',
     'host' => 'localhost',
     'user' => 'root',
     'password' => '',
     'dbname' => '',
-);
+];
 
 // Application/Doctrine configuration
-$applicationOptions = array(
+$applicationOptions = [
     'debug_mode' => true, // in production environment false
     'entity_dir' => dirname(__DIR__) . '/src/Entities',
-);
+];
 
 ```
 

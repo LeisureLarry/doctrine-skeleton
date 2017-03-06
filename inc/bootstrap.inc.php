@@ -15,7 +15,7 @@ $cache = null;
 $isSimpleMode = false;
 
 $config = Setup::createAnnotationMetadataConfiguration(
-    array($applicationOptions['entity_dir']),
+    [$applicationOptions['entity_dir']],
     $applicationOptions['debug_mode'],
     $proxyDir,
     $cache,
