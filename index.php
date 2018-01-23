@@ -11,8 +11,8 @@ session_start();
 // Path to our index.php
 $basePath = dirname(__FILE__);
 
-$controller = isset($_GET['controller']) ? $_GET['controller'] : 'index';
-$action = isset($_GET['action']) ? $_GET['action'] : 'index';
+$controller = $_GET['controller'] ?? 'index';
+$action = $_GET['action'] ?? 'index';
 
 $controllerNamespace = 'Controllers\\';
 $controllerName = $controllerNamespace . ucfirst($controller) . 'Controller';
