@@ -27,6 +27,3 @@ $applicationOptions = [
 ```
 
 Change user, password and dbname to your needs.
-
-### Idea
-[Jan Teriete](https://plus.google.com/106660436858103395374?rel=author)
